@@ -1,0 +1,4 @@
+Paper Towels,abc123,Bounty Super Towels 6pk,120,19.99
+Plastic Cups,pak1000,Red Solo Cups 80pk,50,12.99
+Cast Iron Pans,Pan1r0n,Egg Breaker Cast Iron Pan Single,7,25.49
+catfood,cat111,cat_food_meowmix_single,4,1.99
