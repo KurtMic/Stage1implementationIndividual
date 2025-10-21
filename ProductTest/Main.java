@@ -9,7 +9,6 @@ public class Main {
         ProductCatalog p1 = new ProductCatalog();
 
         // variables test interface
-        String file;
         String test;
 
         // Scanner to accept user input
@@ -83,6 +82,39 @@ public class Main {
         }
         else {
             System.out.println("SKU not found. Quantity not updated.");
+        }
+
+        System.out.println("****************************Test Waitlist File Entry and Notification****************************");
+        // !!! this will remove the emailed waitlist users, so I will paste them here for a reset !!!
+        //pan1r0n,john@email.com,789
+        //cat111,alice@email.com,001
+        //cat111,bob@email.com,002
+        //pan1r0n,tom@email.com,003
+        // !!!
+
+        System.out.print("Enter SKU to waitlist for: ");
+        String waitlistSkuFile = scanner.next();
+
+        System.out.print("Enter customer email: ");
+        String email = scanner.next();
+
+        System.out.print("Enter customer ID: ");
+        String clientID = scanner.next();
+
+        // Add to waitlist .txt file
+        p1.addToWaitlistFile(waitlistSkuFile, email, clientID);
+
+        // Simulate out of stock and then update it to >0
+        Product prod = p1.getProductBySku(waitlistSkuFile);
+        if (prod != null) {
+            p1.updateProductQuantity(waitlistSkuFile, 0); // Set to 0
+            System.out.println("Simulated out-of-stock for SKU: " + waitlistSkuFile);
+
+            System.out.print("Enter restocked quantity: ");
+            int restockedQty = scanner.nextInt();
+
+            // Now restock, which should trigger notification
+            p1.updateProductQuantity(waitlistSkuFile, restockedQty);
         }
 
         System.out.println("****************************Program End****************************");
